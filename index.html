@@ -4,73 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning Hub</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <h1>🎓 Learning Hub</h1>
 
     <p>Welkom op mijn eerste leerplatform.</p>
 
-<input
-    id="searchInput"
-    type="text"
-    placeholder="🔍 Zoek een video..."
->
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Zoek een video..."
+    >
 
-    <div class="video-card">
+    <div class="video-grid">
 
-        <a href="https://www.youtube.com/watch?v=Rt9tW3cMLhI" target="_blank">
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=Rt9tW3cMLhI" target="_blank">
+                <img
+                    src="https://img.youtube.com/vi/Rt9tW3cMLhI/maxresdefault.jpg"
+                    alt="Olivia Rodrigo">
+                <h3>Olivia Rodrigo</h3>
+            </a>
+        </div>
 
-            <img
-                src="https://img.youtube.com/vi/Rt9tW3cMLhI/hqdefault.jpg"
-                alt="Olivia Rodrigo">
-
-            <h3>Olivia Rodrigo</h3>
-
-        </a>
-
-    </div>
-
-    <div class="video-card">
-
-        <a href="https://www.youtube.com/watch?v=v1t4MTqdfyI" target="_blank">
-
-            <img
-                src="https://img.youtube.com/vi/v1t4MTqdfyI/hqdefault.jpg"
-                alt="Ariana Grande">
-
-            <h3>Ariana Grande</h3>
-
-        </a>
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=v1t4MTqdfyI" target="_blank">
+                <img
+                    src="https://img.youtube.com/vi/v1t4MTqdfyI/maxresdefault.jpg"
+                    alt="Ariana Grande">
+                <h3>Ariana Grande</h3>
+            </a>
+        </div>
 
     </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+    <script>
+        const zoekbalk = document.getElementById("searchInput");
 
-  const zoekbalk = document.querySelector("input");
+        zoekbalk.addEventListener("keyup", function() {
 
-  zoekbalk.addEventListener("keyup", function () {
+            const zoekterm = zoekbalk.value.toLowerCase();
+            const videos = document.querySelectorAll(".video-card");
 
-    const zoekterm = zoekbalk.value.toLowerCase();
-    const videos = document.querySelectorAll(".video-card");
+            videos.forEach(video => {
 
-    videos.forEach(video => {
+                const titel = video.querySelector("h3").textContent.toLowerCase();
 
-      const titel = video.querySelector("h3").textContent.toLowerCase();
+                if (titel.includes(zoekterm)) {
+                    video.style.display = "block";
+                } else {
+                    video.style.display = "none";
+                }
 
-      video.style.display =
-        titel.includes(zoekterm) ? "block" : "none";
+            });
 
-    });
-
-  });
-
-});
-</script>
+        });
+    </script>
 
 </body>
 </html>
