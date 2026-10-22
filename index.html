@@ -14,42 +14,40 @@
 
     <p>Welkom op mijn eerste leerplatform.</p>
 
-    <input
+<input
+    id="searchInput"
     type="text"
     placeholder="🔍 Zoek een video..."
 >
 
     <div class="video-card">
 
-        <h3>Olivia Rodrigo</h3>
+        <a href="https://www.youtube.com/watch?v=Rt9tW3cMLhI" target="_blank">
 
-        <iframe
-            width="100%"
-            height="315"
-            src="https://www.youtube.com/embed/Rt9tW3cMLhI"
-            title="Olivia Rodrigo"
-            frameborder="0"
-            allowfullscreen>
-        </iframe>
+            <img
+                src="https://img.youtube.com/vi/Rt9tW3cMLhI/hqdefault.jpg"
+                alt="Olivia Rodrigo">
+
+            <h3>Olivia Rodrigo</h3>
+
+        </a>
 
     </div>
-
-    <br>
 
     <div class="video-card">
 
-        <h3>Ariana Grande</h3>
+        <a href="https://www.youtube.com/watch?v=v1t4MTqdfyI" target="_blank">
 
-        <iframe
-            width="100%"
-            height="315"
-            src="https://www.youtube.com/embed/v1t4MTqdfyI"
-            title="Ariana Grande"
-            frameborder="0"
-            allowfullscreen>
-        </iframe>
+            <img
+                src="https://img.youtube.com/vi/v1t4MTqdfyI/hqdefault.jpg"
+                alt="Ariana Grande">
+
+            <h3>Ariana Grande</h3>
+
+        </a>
 
     </div>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -64,11 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const titel = video.querySelector("h3").textContent.toLowerCase();
 
-      if (titel.includes(zoekterm)) {
-        video.style.display = "block";
-      } else {
-        video.style.display = "none";
-      }
+      video.style.display =
+        titel.includes(zoekterm) ? "block" : "none";
 
     });
 
