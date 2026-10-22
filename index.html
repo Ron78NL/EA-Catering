@@ -69,6 +69,38 @@
             </a>
         </div>
 
-        <div class="video-card">
+       <div class="video-card">
             <a href="https://www.youtube.com/watch?v=yebNIHKAC4A" target="_blank">
-                <img src="https://img.youtube.com/vi/yebNIHKAC4
+                <img src="https://img.youtube.com/vi/yebNIHKAC4A/hqdefault.jpg" alt="Video">
+                <h3>Nieuwe Video</h3>
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        const zoekbalk = document.getElementById('searchInput');
+
+        zoekbalk.addEventListener('keyup', function () {
+
+            const zoekterm = zoekbalk.value.toLowerCase();
+            const videos = document.querySelectorAll('.video-card');
+
+            videos.forEach(function(video) {
+
+                const titel =
+                    video.querySelector('h3').textContent.toLowerCase();
+
+                if (titel.includes(zoekterm)) {
+                    video.style.display = 'block';
+                } else {
+                    video.style.display = 'none';
+                }
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>
