@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <h1>🎓 Learning Hub</h1>
@@ -49,6 +50,32 @@
         </iframe>
 
     </div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const zoekbalk = document.querySelector("input");
+
+  zoekbalk.addEventListener("keyup", function () {
+
+    const zoekterm = zoekbalk.value.toLowerCase();
+    const videos = document.querySelectorAll(".video-card");
+
+    videos.forEach(video => {
+
+      const titel = video.querySelector("h3").textContent.toLowerCase();
+
+      if (titel.includes(zoekterm)) {
+        video.style.display = "block";
+      } else {
+        video.style.display = "none";
+      }
+
+    });
+
+  });
+
+});
+</script>
 
 </body>
 </html>
