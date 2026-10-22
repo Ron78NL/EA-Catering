@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Hub</title>
+    <title>🎓 Learning Hub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <h1>🎓 Learning Hub</h1>
 
-    <p>Welkom op mijn eerste leerplatform.</p>
+    <p>Zoek en bekijk video's</p>
 
     <input
         id="searchInput"
@@ -22,43 +22,53 @@
 
         <div class="video-card">
             <a href="https://www.youtube.com/watch?v=Rt9tW3cMLhI" target="_blank">
-                <img src="https://img.youtube.com/vi/Rt9tW3cMLhI/hqdefault.jpg" alt="Video">
+                <img src="https://img.youtube.com/vi/Rt9tW3cMLhI/hqdefault.jpg" alt="Olivia Rodrigo">
                 <h3>Olivia Rodrigo</h3>
             </a>
         </div>
 
         <div class="video-card">
             <a href="https://www.youtube.com/watch?v=v1t4MTqdfyI" target="_blank">
-                <img src="https://img.youtube.com/vi/v1t4MTqdfyI/hqdefault.jpg" alt="Video">
+                <img src="https://img.youtube.com/vi/v1t4MTqdfyI/hqdefault.jpg" alt="Ariana Grande">
                 <h3>Ariana Grande</h3>
             </a>
         </div>
 
-    </div>
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=ko70cExuzZM" target="_blank">
+                <img src="https://img.youtube.com/vi/ko70cExuzZM/hqdefault.jpg" alt="Taylor Swift">
+                <h3>Taylor Swift</h3>
+            </a>
+        </div>
 
-    <script>
-        const zoekbalk = document.getElementById('searchInput');
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=mrV8kK5t0V8" target="_blank">
+                <img src="https://img.youtube.com/vi/mrV8kK5t0V8/hqdefault.jpg" alt="Bruno Mars">
+                <h3>Bruno Mars</h3>
+            </a>
+        </div>
 
-        zoekbalk.addEventListener('keyup', function () {
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=u2ah9tWTkmk" target="_blank">
+                <img src="https://img.youtube.com/vi/u2ah9tWTkmk/hqdefault.jpg" alt="Alex Warren">
+                <h3>Alex Warren</h3>
+            </a>
+        </div>
 
-            const zoekterm = zoekbalk.value.toLowerCase();
-            const videos = document.querySelectorAll('.video-card');
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=msGuqelopMA" target="_blank">
+                <img src="https://img.youtube.com/vi/msGuqelopMA/hqdefault.jpg" alt="Justin Bieber">
+                <h3>Justin Bieber</h3>
+            </a>
+        </div>
 
-            videos.forEach(function(video) {
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=5RNy_1odv20" target="_blank">
+                <img src="https://img.youtube.com/vi/5RNy_1odv20/hqdefault.jpg" alt="SIENNA SPIRO">
+                <h3>SIENNA SPIRO</h3>
+            </a>
+        </div>
 
-                const titel =
-                    video.querySelector('h3').textContent.toLowerCase();
-
-                if (titel.includes(zoekterm)) {
-                    video.style.display = 'block';
-                } else {
-                    video.style.display = 'none';
-                }
-
-            });
-
-        });
-    </script>
-
-</body>
-</html>
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=yebNIHKAC4A" target="_blank">
+                <img src="https://img.youtube.com/vi/yebNIHKAC4
