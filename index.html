@@ -13,8 +13,8 @@
     <p>Welkom op mijn eerste leerplatform.</p>
 
     <input
-        type="text"
         id="searchInput"
+        type="text"
         placeholder="🔍 Zoek een video..."
     >
 
@@ -22,18 +22,14 @@
 
         <div class="video-card">
             <a href="https://www.youtube.com/watch?v=Rt9tW3cMLhI" target="_blank">
-                <img
-                    src="https://img.youtube.com/vi/Rt9tW3cMLhI/maxresdefault.jpg"
-                    alt="Olivia Rodrigo">
+                <img src="https://img.youtube.com/vi/Rt9tW3cMLhI/hqdefault.jpg" alt="Video">
                 <h3>Olivia Rodrigo</h3>
             </a>
         </div>
 
         <div class="video-card">
             <a href="https://www.youtube.com/watch?v=v1t4MTqdfyI" target="_blank">
-                <img
-                    src="https://img.youtube.com/vi/v1t4MTqdfyI/maxresdefault.jpg"
-                    alt="Ariana Grande">
+                <img src="https://img.youtube.com/vi/v1t4MTqdfyI/hqdefault.jpg" alt="Video">
                 <h3>Ariana Grande</h3>
             </a>
         </div>
@@ -41,21 +37,22 @@
     </div>
 
     <script>
-        const zoekbalk = document.getElementById("searchInput");
+        const zoekbalk = document.getElementById('searchInput');
 
-        zoekbalk.addEventListener("keyup", function() {
+        zoekbalk.addEventListener('keyup', function () {
 
             const zoekterm = zoekbalk.value.toLowerCase();
-            const videos = document.querySelectorAll(".video-card");
+            const videos = document.querySelectorAll('.video-card');
 
-            videos.forEach(video => {
+            videos.forEach(function(video) {
 
-                const titel = video.querySelector("h3").textContent.toLowerCase();
+                const titel =
+                    video.querySelector('h3').textContent.toLowerCase();
 
                 if (titel.includes(zoekterm)) {
-                    video.style.display = "block";
+                    video.style.display = 'block';
                 } else {
-                    video.style.display = "none";
+                    video.style.display = 'none';
                 }
 
             });
