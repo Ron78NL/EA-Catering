@@ -27,6 +27,26 @@
             {
                 title: "Instructie Reduceren van Bouillon",
                 id: "AZdPYo1RWfQ"
+            },
+
+            {
+                title: "Instructie Degraisseren van Bouillon",
+                id: "ABYB6CxNeVo"
+            },
+
+            {
+                title: "Instructie Arrosseren",
+                id: "KfdiOrQkN4U"
+            },
+
+            {
+                title: "Instructie Aanbraden",
+                id: "KD_NEiQ8Lj4"
+            },
+
+            {
+                title: "Instructie Vacumeren",
+                id: "KcJeU7aODPY"
             }
 
         ];
@@ -60,15 +80,11 @@
             .getElementById("searchInput")
             .addEventListener("keyup", function() {
 
-                const zoekterm =
-                    this.value.toLowerCase();
+                const zoekterm = this.value.toLowerCase();
 
-                const gefilterd =
-                    videos.filter(video =>
-                        video.title
-                        .toLowerCase()
-                        .includes(zoekterm)
-                    );
+                const gefilterd = videos.filter(video =>
+                    video.title.toLowerCase().includes(zoekterm)
+                );
 
                 toonVideos(gefilterd);
 
