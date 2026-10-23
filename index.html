@@ -215,6 +215,8 @@
     ]
 
 };
+
+let geselecteerdeCategorieen = [];
         
 const videoGrid = document.getElementById("videoGrid");
 document
@@ -324,10 +326,6 @@ document.getElementById("resultCount").textContent =
 document
     .getElementById("searchInput")
     .addEventListener("keyup", filterVideos);
-
-document
-    .getElementById("categoryFilter")
-    .addEventListener("change", filterVideos);
         
     </script>
 
