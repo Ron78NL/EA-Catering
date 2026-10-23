@@ -296,3 +296,27 @@ p {
     background: #2563eb;
     color: white;
 }
+
+.header-logo {
+
+    position: fixed;
+
+    top: 15px;
+    left: 15px;
+
+    z-index: 1000;
+}
+
+.header-logo img {
+
+    height: 60px;
+
+    opacity: 0.75;
+
+    transition: opacity 0.3s ease;
+}
+
+.header-logo img:hover {
+
+    opacity: 1;
+}
