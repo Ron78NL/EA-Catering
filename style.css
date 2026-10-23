@@ -388,3 +388,16 @@ body::before {
 
     color: #2563eb;
 }
+
+.cat-btn.active {
+
+    background: #2563eb;
+
+    color: white;
+
+    border-left: 6px solid #facc15;
+
+    font-weight: 700;
+
+    transform: translateX(8px);
+}
