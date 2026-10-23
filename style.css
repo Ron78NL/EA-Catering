@@ -129,3 +129,28 @@ p {
     }
 
 }
+
+#categoryFilter {
+
+    width: 100%;
+    max-width: 700px;
+
+    height: 170px;
+
+    display: block;
+
+    margin: -20px auto 30px auto;
+
+    padding: 10px;
+
+    border: 1px solid #d0d0d0;
+
+    border-radius: 12px;
+
+    background: white;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+    font-size: 15px;
+
+}
