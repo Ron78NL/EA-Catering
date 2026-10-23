@@ -239,15 +239,7 @@ p {
     border-radius: 10px;
 }
 
-.header-logo {
 
-    position: fixed;
-
-    top: 15px;
-    left: 15px;
-
-    z-index: 1000;
-}
 
 .header-logo img {
 
@@ -309,18 +301,6 @@ p {
     margin: 0 auto 30px auto;
 
     text-align: center;
-}
-
-.nac-logo {
-
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    width: 90px;
-
-    opacity: 0.85;
 }
 
 .title-block {
