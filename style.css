@@ -8,6 +8,8 @@ body {
     font-family: "Segoe UI", Arial, sans-serif;
     background-color: #f4f6f9;
     padding: 30px;
+    position: relative;
+}
 }
 
 h1 {
@@ -409,4 +411,27 @@ h1 {
     letter-spacing: 2px;
 
     margin-bottom: 10px;
+}
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background-image: url("images/navy academy.png");
+
+    background-repeat: no-repeat;
+
+    background-position: center center;
+
+    background-size: 900px;
+
+    opacity: 0.03;
+
+    pointer-events: none;
+
+    z-index: -1;
 }
