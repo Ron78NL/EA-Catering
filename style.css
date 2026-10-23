@@ -421,3 +421,12 @@ body::before {
 
     font-weight: 700;
 }
+
+.category-menu {
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 10px;
+}
