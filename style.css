@@ -333,11 +333,11 @@ body::before {
 
     background-repeat: no-repeat;
 
-    background-position: center center;
+    background-position: center 40px;
 
-    background-size: 1200px;
+    background-size: 1400px;
 
-    opacity: 0.06;
+    opacity: 0.08;
 
     pointer-events: none;
 
