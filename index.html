@@ -13,22 +13,32 @@
 
     <p>Zoek en bekijk video's</p>
 
-    <input
-        id="searchInput"
-        type="text"
-        placeholder="🔍 Zoek een video..."
-    >
+   <input
+    id="searchInput"
+    type="text"
+    placeholder="🔍 Zoek een video..."
+>
+
+<p class="filter-help">
+    Tip: gebruik Ctrl + klik om meerdere categorieën te selecteren.
+</p>
+
+<p class="filter-title">
+    <strong>Filter op categorie(en)</strong>
+</p>
+
+<p id="resultCount"></p>
 
 <select id="categoryFilter" multiple>
 
     <option value="Bouillons">Bouillons</option>
     <option value="Snijtechnieken">Snijtechnieken</option>
-    <option value="Groenten & Fruit">Groenten & Fruit</option>
-    <option value="Vlees & Vis">Vlees & Vis</option>
+    <option value="Groenten &amp; Fruit">Groenten &amp; Fruit</option>
+    <option value="Vlees &amp; Vis">Vlees &amp; Vis</option>
     <option value="Sauzen">Sauzen</option>
     <option value="Bereidingstechnieken">Bereidingstechnieken</option>
     <option value="Keukenapparatuur">Keukenapparatuur</option>
-    <option value="Bakkerij & Patisserie">Bakkerij & Patisserie</option>
+    <option value="Bakkerij &amp; Patisserie">Bakkerij &amp; Patisserie</option>
     <option value="Mise en Place">Mise en Place</option>
 
 </select>
@@ -96,6 +106,84 @@
 
 ];
 
+    const categories = {
+
+    "Bouillons": [
+        "AZdPYo1RWfQ",
+        "ABYB6CxNeVo",
+        "xmc2JEyu6LM",
+        "gKrq70jGDEQ",
+        "qwHLqZHukIo",
+        "q9zlcYsxeuU"
+    ],
+
+    "Snijtechnieken": [
+        "JQjxhGzwTrA",
+        "pC1JnpVI1so",
+        "xDr0W8D6jh0",
+        "OTUE7Q4Mdxo",
+        "jMmrwCJZpAY",
+        "BoRaJGuFCWY",
+        "ulr4q5Shu4s",
+        "Rv_Yq7ka_lU"
+    ],
+
+    "Groenten & Fruit": [
+        "NJrNRkHI2tw",
+        "oR1iPJgytbM",
+        "m0cK_Pge9wk",
+        "Rk_B5yyO0Mw",
+        "Axz_LhRS3pk"
+    ],
+
+    "Vlees & Vis": [
+        "KD_NEiQ8Lj4",
+        "rFt79XOHlPQ",
+        "fxvBGpmQMt4",
+        "TFc8r3EYGGo",
+        "xvUjkwQDof8"
+    ],
+
+    "Sauzen": [
+        "KfdiOrQkN4U",
+        "95pwbgIikZk",
+        "C9kixHqbfCQ",
+        "hi6CqhmMddQ",
+        "OrcQfrNCZ4Q"
+    ],
+
+    "Bereidingstechnieken": [
+        "KcJeU7aODPY",
+        "VISP2VEdlMs",
+        "aLfP0g9VvQA",
+        "VrBw-bB9ZK0",
+        "M3ThiVgcfj4"
+    ],
+
+    "Keukenapparatuur": [
+        "3Z9BISrZ3uA",
+        "YlsdetvnrUY",
+        "Qgf6An9WMvo"
+    ],
+
+    "Bakkerij & Patisserie": [
+        "U1l0h9y-Gsc",
+        "fD_Gpiukchw",
+        "Jw1CXHBeEKQ",
+        "oZN70meOUyg",
+        "0QoFjfehnes"
+    ],
+
+    "Mise en Place": [
+        "-ylpJWBs77M",
+        "WBYYse9ZKNI",
+        "t1qnTkSJ8Uk",
+        "ugkUzNX4qkM",
+        "-RRZmj3fFmA"
+    ]
+
+};
+        
 const videoGrid = document.getElementById("videoGrid");
 
 function toonVideos(lijst) {
@@ -133,21 +221,52 @@ function toonVideos(lijst) {
     });
 
 }
-        toonVideos(videos);
+function filterVideos() {
+
+    const zoekterm =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const geselecteerdeCategorieen =
+        [...document.getElementById("categoryFilter").selectedOptions]
+            .map(option => option.value);
+
+    const gefilterd = videos.filter(video => {
+
+        const titelMatch =
+            video.title.toLowerCase().includes(zoekterm);
+
+        const categorieMatch =
+            geselecteerdeCategorieen.length === 0 ||
+
+            geselecteerdeCategorieen.some(cat =>
+                categories[cat]?.includes(video.id)
+            );
+
+        return titelMatch && categorieMatch;
+
+    });
+
+    toonVideos(gefilterd);
+
+document.getElementById("resultCount").textContent =
+    `${gefilterd.length} video('s) gevonden`;
+
+}
+
+toonVideos(videos);
+        
+document.getElementById("resultCount").textContent =
+    `${videos.length} video's gevonden`;
 
 document
     .getElementById("searchInput")
-    .addEventListener("keyup", function() {
+    .addEventListener("keyup", filterVideos);
 
-        const zoekterm = this.value.toLowerCase();
-
-        const gefilterd = videos.filter(video =>
-            video.title.toLowerCase().includes(zoekterm)
-        );
-
-        toonVideos(gefilterd);
-
-    });
+document
+    .getElementById("categoryFilter")
+    .addEventListener("change", filterVideos);
         
     </script>
 
