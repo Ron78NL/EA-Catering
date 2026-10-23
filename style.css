@@ -344,15 +344,37 @@ body::before {
     z-index: -1;
 }
 
-.category-buttons {
+.category-panel {
 
-    display: flex;
+    max-width: 350px;
 
-    flex-direction: column;
+    margin: 20px auto 40px auto;
 
-    width: 320px;
+    background: white;
 
-    margin: 20px auto;
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,.10);
+}
+
+.category-header {
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 16px;
+
+    font-weight: 700;
+
+    text-align: center;
+}
+
+.category-menu {
+
+    padding: 10px;
 }
 
 .cat-btn {
@@ -361,26 +383,23 @@ body::before {
 
     text-align: left;
 
-    padding: 14px 18px;
-
-    margin-bottom: 8px;
-
     border: none;
 
-    border-radius: 10px;
+    background: transparent;
 
-    background: #f3f6fb;
+    padding: 12px 15px;
 
-    color: #1e3a8a;
-
-    font-size: 15px;
-
-    font-weight: 600;
+    border-radius: 8px;
 
     cursor: pointer;
 
-    transition: all 0.2s ease;
+    font-size: 15px;
+
+    color: #1e3a8a;
+
+    transition: .2s;
 }
+
 
 .cat-btn::before {
 
@@ -389,15 +408,16 @@ body::before {
     color: #2563eb;
 }
 
+.cat-btn:hover {
+
+    background: #eef4ff;
+}
+
 .cat-btn.active {
 
     background: #2563eb;
 
     color: white;
 
-    border-left: 6px solid #facc15;
-
     font-weight: 700;
-
-    transform: translateX(8px);
 }
