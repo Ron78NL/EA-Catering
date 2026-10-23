@@ -237,66 +237,6 @@ p {
     border-radius: 10px;
 }
 
-.category-container {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.category-button {
-
-    background: #2563eb;
-    color: white;
-
-    border: none;
-
-    border-radius: 14px;
-
-    padding: 14px 24px;
-
-    font-size: 18px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-}
-
-.subcategories {
-
-    display: none;
-
-    margin-top: 15px;
-}
-
-.subcategories.active {
-    display: block;
-}
-
-.subcat {
-
-    margin: 5px;
-
-    padding: 10px 16px;
-
-    border: none;
-
-    border-radius: 999px;
-
-    background: white;
-
-    cursor: pointer;
-
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-
-    transition: 0.2s;
-}
-
-.subcat:hover {
-
-    background: #2563eb;
-    color: white;
-}
-
 .header-logo {
 
     position: fixed;
