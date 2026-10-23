@@ -217,7 +217,39 @@
 };
         
 const videoGrid = document.getElementById("videoGrid");
+document
+.querySelectorAll(".cat-btn")
+.forEach(button => {
 
+    button.addEventListener("click", () => {
+
+        const categorie =
+            button.dataset.category;
+
+        if (
+            geselecteerdeCategorieen.includes(categorie)
+        ) {
+
+            geselecteerdeCategorieen =
+                geselecteerdeCategorieen.filter(
+                    c => c !== categorie
+                );
+
+            button.classList.remove("active");
+
+        } else {
+
+            geselecteerdeCategorieen.push(categorie);
+
+            button.classList.add("active");
+
+        }
+
+        filterVideos();
+
+    });
+
+});
 function toonVideos(lijst) {
 
     videoGrid.innerHTML = "";
