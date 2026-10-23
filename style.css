@@ -343,3 +343,37 @@ body::before {
 
     z-index: -1;
 }
+
+.category-buttons {
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 320px;
+
+    margin: 20px auto;
+}
+
+.cat-btn {
+
+    width: 100%;
+
+    text-align: left;
+
+    padding: 14px 18px;
+
+    margin-bottom: 8px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #f3f6fb;
+
+    color: #1e3a8a;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
