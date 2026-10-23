@@ -25,14 +25,7 @@ p {
 }
 
 #searchInput {
-    width: 100%;
-    max-width: 700px;
-    display: block;
-    margin: 0 auto 40px auto;
-    padding: 15px 20px;
-    font-size: 18px;
-    border: 1px solid #d0d0d0;
-    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .video-grid {
@@ -57,8 +50,8 @@ p {
 }
 
 .video-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.18);
 }
 
 .video-card a {
