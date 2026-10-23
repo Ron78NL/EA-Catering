@@ -40,8 +40,8 @@ p {
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
 }
 
 .video-card {
@@ -73,10 +73,10 @@ p {
 }
 
 .video-card h3 {
-    padding: 18px;
+    padding: 12px;
     text-align: center;
 
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 600;
-    line-height: 1.4;
+    line-height: 1.3;
 }
