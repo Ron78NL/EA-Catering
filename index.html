@@ -219,36 +219,24 @@
 
 };
 
-let geselecteerdeCategorieen = [];
-        
-const videoGrid = document.getElementById("videoGrid");
+let geselecteerdeCategorie = "";
+
 document
 .querySelectorAll(".cat-btn")
 .forEach(button => {
 
     button.addEventListener("click", () => {
 
-        const categorie =
+        document
+            .querySelectorAll(".cat-btn")
+            .forEach(btn =>
+                btn.classList.remove("active")
+            );
+
+        button.classList.add("active");
+
+        geselecteerdeCategorie =
             button.dataset.category;
-
-        if (
-            geselecteerdeCategorieen.includes(categorie)
-        ) {
-
-            geselecteerdeCategorieen =
-                geselecteerdeCategorieen.filter(
-                    c => c !== categorie
-                );
-
-            button.classList.remove("active");
-
-        } else {
-
-            geselecteerdeCategorieen.push(categorie);
-
-            button.classList.add("active");
-
-        }
 
         filterVideos();
 
@@ -302,8 +290,11 @@ function filterVideos() {
         const titelMatch =
             video.title.toLowerCase().includes(zoekterm);
 
-        const categorieMatch =
-            geselecteerdeCategorieen.length === 0 ||
+     const categorieMatch =
+    geselecteerdeCategorie === "" ||
+
+    categories[geselecteerdeCategorie]
+        ?.includes(video.id);
 
             geselecteerdeCategorieen.some(cat =>
                 categories[cat]?.includes(video.id)
