@@ -31,29 +31,33 @@ p {
     margin: 0 auto 40px auto;
     padding: 15px 20px;
     font-size: 18px;
-    border: 1px solid #d1d5db;
+    border: 1px solid #d0d0d0;
     border-radius: 12px;
 }
 
 .video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 24px;
     max-width: 1400px;
     margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 25px;
 }
 
 .video-card {
     background: white;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+
     transition: transform 0.2s ease,
                 box-shadow 0.2s ease;
 }
 
 .video-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+
     box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
 
@@ -64,16 +68,15 @@ p {
 
 .video-card img {
     width: 100%;
+    height: auto;
     display: block;
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
-    background-color: #000;
 }
 
 .video-card h3 {
-    padding: 16px;
+    padding: 18px;
     text-align: center;
-    font-size: 1.1rem;
+
+    font-size: 1.3rem;
+    font-weight: 600;
     line-height: 1.4;
-    min-height: 85px;
 }
