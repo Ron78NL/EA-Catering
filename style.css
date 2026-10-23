@@ -36,28 +36,29 @@ p {
 }
 
 .video-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
 }
 
 .video-card {
+    width: 200px;
+    flex: 0 0 200px;
+
     background: white;
     border-radius: 16px;
     overflow: hidden;
 
     box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-
     transition: transform 0.2s ease,
                 box-shadow 0.2s ease;
 }
 
 .video-card:hover {
     transform: translateY(-5px);
-
     box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
 
@@ -73,10 +74,9 @@ p {
 }
 
 .video-card h3 {
-    padding: 12px;
+    padding: 10px;
     text-align: center;
-
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     line-height: 1.3;
 }
