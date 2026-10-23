@@ -18,89 +18,62 @@
         placeholder="🔍 Zoek een video..."
     >
 
-    <div class="video-grid">
-
-       <div class="video-card">
-    <a href="https://www.youtube.com/watch?v=AZdPYo1RWfQ" target="_blank">
-        <img src="https://img.youtube.com/vi/AZdPYo1RWfQ/hqdefault.jpg"
-             alt="Instructie Reduceren van Bouillon">
-        <h3>Instructie Reduceren van Bouillon</h3>
-    </a>
-</div>
-
-        <div class="video-card">
-            <a href="https://www.youtube.com/watch?v=v1t4MTqdfyI" target="_blank">
-                <img src="https://img.youtube.com/vi/v1t4MTqdfyI/hqdefault.jpg" alt="Ariana Grande">
-                <h3>Ariana Grande</h3>
-            </a>
-        </div>
-
-        <div class="video-card">
-            <a href="https://www.youtube.com/watch?v=ko70cExuzZM" target="_blank">
-                <img src="https://img.youtube.com/vi/ko70cExuzZM/hqdefault.jpg" alt="Taylor Swift">
-                <h3>Taylor Swift</h3>
-            </a>
-        </div>
-
-        <div class="video-card">
-            <a href="https://www.youtube.com/watch?v=mrV8kK5t0V8" target="_blank">
-                <img src="https://img.youtube.com/vi/mrV8kK5t0V8/hqdefault.jpg" alt="Bruno Mars">
-                <h3>Bruno Mars</h3>
-            </a>
-        </div>
-
-        <div class="video-card">
-            <a href="https://www.youtube.com/watch?v=u2ah9tWTkmk" target="_blank">
-                <img src="https://img.youtube.com/vi/u2ah9tWTkmk/hqdefault.jpg" alt="Alex Warren">
-                <h3>Alex Warren</h3>
-            </a>
-        </div>
-
-        <div class="video-card">
-            <a href="https://www.youtube.com/watch?v=msGuqelopMA" target="_blank">
-                <img src="https://img.youtube.com/vi/msGuqelopMA/hqdefault.jpg" alt="Justin Bieber">
-                <h3>Justin Bieber</h3>
-            </a>
-        </div>
-
-        <div class="video-card">
-            <a href="https://www.youtube.com/watch?v=5RNy_1odv20" target="_blank">
-                <img src="https://img.youtube.com/vi/5RNy_1odv20/hqdefault.jpg" alt="SIENNA SPIRO">
-                <h3>SIENNA SPIRO</h3>
-            </a>
-        </div>
-
-       <div class="video-card">
-            <a href="https://www.youtube.com/watch?v=yebNIHKAC4A" target="_blank">
-                <img src="https://img.youtube.com/vi/yebNIHKAC4A/hqdefault.jpg" alt="Video">
-                <h3>Nieuwe Video</h3>
-            </a>
-        </div>
-
-    </div>
+    <div id="videoGrid" class="video-grid"></div>
 
     <script>
-        const zoekbalk = document.getElementById('searchInput');
 
-        zoekbalk.addEventListener('keyup', function () {
+        const videos = [
 
-            const zoekterm = zoekbalk.value.toLowerCase();
-            const videos = document.querySelectorAll('.video-card');
+            {
+                title: "Instructie Reduceren van Bouillon",
+                id: "AZdPYo1RWfQ"
+            }
 
-            videos.forEach(function(video) {
+        ];
 
-                const titel =
-                    video.querySelector('h3').textContent.toLowerCase();
+        const videoGrid = document.getElementById("videoGrid");
 
-                if (titel.includes(zoekterm)) {
-                    video.style.display = 'block';
-                } else {
-                    video.style.display = 'none';
-                }
+        function toonVideos(lijst) {
+
+            videoGrid.innerHTML = "";
+
+            lijst.forEach(video => {
+
+                videoGrid.innerHTML += `
+                    <div class="video-card">
+                        <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank">
+                            <img
+                                src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg"
+                                alt="${video.title}">
+                            <h3>${video.title}</h3>
+                        </a>
+                    </div>
+                `;
 
             });
 
-        });
+        }
+
+        toonVideos(videos);
+
+        document
+            .getElementById("searchInput")
+            .addEventListener("keyup", function() {
+
+                const zoekterm =
+                    this.value.toLowerCase();
+
+                const gefilterd =
+                    videos.filter(video =>
+                        video.title
+                        .toLowerCase()
+                        .includes(zoekterm)
+                    );
+
+                toonVideos(gefilterd);
+
+            });
+
     </script>
 
 </body>
