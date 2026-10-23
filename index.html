@@ -290,17 +290,13 @@ function filterVideos() {
         const titelMatch =
             video.title.toLowerCase().includes(zoekterm);
 
-     const categorieMatch =
+const categorieMatch =
     geselecteerdeCategorie === "" ||
 
     categories[geselecteerdeCategorie]
         ?.includes(video.id);
 
-            geselecteerdeCategorieen.some(cat =>
-                categories[cat]?.includes(video.id)
-            );
-
-        return titelMatch && categorieMatch;
+return titelMatch && categorieMatch;
 
     });
 
