@@ -320,3 +320,22 @@ p {
 
     opacity: 1;
 }
+
+.main-category {
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 14px 20px;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
