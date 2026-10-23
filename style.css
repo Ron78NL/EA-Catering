@@ -11,10 +11,33 @@ body {
     position: relative;
 }
 
-h1 {
+/* Achtergrondlogo */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("images/navy%20academy.png");
+    background-repeat: no-repeat;
+    background-position: center 40px;
+    background-size: 1400px;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Titel */
+.topbar {
+    max-width: 1400px;
+    margin: 0 auto 30px auto;
     text-align: center;
+    padding-top: 10px;
+}
+
+h1 {
     color: #2563eb;
-    font-size: 3rem;
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
     margin-bottom: 10px;
 }
 
@@ -25,22 +48,18 @@ p {
     font-size: 1.1rem;
 }
 
+/* Zoekbalk */
 #searchInput {
     width: 100%;
     max-width: 700px;
     display: block;
     margin: 0 auto 40px auto;
-
     padding: 15px 20px;
     font-size: 18px;
-
     border: 1px solid #d0d0d0;
     border-radius: 12px;
-
     background: white;
-
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-
     transition: all 0.25s ease;
 }
 
@@ -50,35 +69,100 @@ p {
     box-shadow: 0 0 0 4px rgba(37,99,235,0.15);
 }
 
+/* Aantal resultaten */
+#resultCount {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2563eb;
+    background: white;
+    max-width: 250px;
+    margin: 0 auto 15px auto;
+    padding: 8px 12px;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Categoriemenu */
+.category-panel {
+    max-width: 350px;
+    margin: 20px auto 40px auto;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.10);
+}
+
+.category-header {
+    background: #2563eb;
+    color: white;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.category-header:hover {
+    background: #1d4ed8;
+}
+
+.category-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.cat-btn {
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: transparent;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #1e3a8a;
+    transition: .2s;
+}
+
+.cat-btn::before {
+    content: "▸ ";
+    color: #2563eb;
+}
+
+.cat-btn:hover {
+    background: #eef4ff;
+}
+
+.cat-btn.active {
+    background: #2563eb;
+    color: white;
+    font-weight: 700;
+}
+
+.cat-btn.active::before {
+    color: white;
+}
+
+/* Videogrid */
 .video-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fill, minmax(220px, 220px));
-
+    grid-template-columns: repeat(auto-fill, minmax(220px, 220px));
     justify-content: center;
-
     gap: 24px;
-
     max-width: 1400px;
     margin: 0 auto;
 }
 
 .video-card {
     width: 220px;
-    flex: 0 0 220px;
-
     background: white;
-
     border-radius: 16px;
-
     overflow: hidden;
-
     box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .video-card:hover {
@@ -97,26 +181,22 @@ p {
     height: 120px;
     object-fit: cover;
     display: block;
-
     background: #e5e7eb;
 }
 
 .video-card h3 {
     padding: 12px;
-
     min-height: 65px;
-
     text-align: center;
-
     font-size: 0.9rem;
     font-weight: 600;
     line-height: 1.3;
-
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+/* Mobiel */
 @media (max-width: 768px) {
 
     body {
@@ -127,306 +207,13 @@ p {
         font-size: 2rem;
     }
 
+    .video-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
     .video-card {
         width: 100%;
         max-width: 320px;
-        flex: 0 0 auto;
     }
-
-}
-
-#categoryFilter {
-
-    width: 100%;
-    max-width: 700px;
-
-    height: 180px;
-
-    overflow-y: auto;
-
-    display: block;
-
-    margin: 0 auto 30px auto;
-
-    padding: 12px;
-
-    border: none;
-
-    border-radius: 16px;
-
-    background: white;
-
-    box-shadow: 0 4px 15px rgba(0,0,0,0.10);
-
-    font-size: 15px;
-
-    transition: all 0.3s ease;
-}
-
-#categoryFilter:focus {
-
-    outline: none;
-
-    box-shadow:
-        0 0 0 4px rgba(37, 99, 235, 0.15),
-        0 4px 15px rgba(0,0,0,0.10);
-}
-
-#categoryFilter option {
-
-    padding: 10px;
-
-    margin: 3px 0;
-
-    border-radius: 6px;
-}
-
-#categoryFilter option:checked {
-
-    background: #2563eb;
-
-    color: white;
-
-    font-weight: 600;
-}
-
-.filter-title {
-    text-align: center;
-    margin-bottom: 8px;
-    color: #2563eb;
-}
-
-.filter-help {
-    text-align: center;
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 12px;
-}
-
-#resultCount {
-    text-align: center;
-    font-weight: 600;
-    color: #2563eb;
-    margin-bottom: 15px;
-
-    background: white;
-    max-width: 250px;
-    margin-left: auto;
-    margin-right: auto;
-
-    padding: 8px 12px;
-
-    border-radius: 999px;
-
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-
-#categoryFilter option:hover {
-    background: #dbeafe;
-}
-#categoryFilter::-webkit-scrollbar {
-    width: 8px;
-}
-
-#categoryFilter::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-#categoryFilter::-webkit-scrollbar-thumb {
-    background: #2563eb;
-    border-radius: 10px;
-}
-
-.category-panel {
-
-    max-width: 1100px;
-
-    margin: 0 auto 25px auto;
-
-    background: white;
-
-    border-radius: 14px;
-
-    overflow: hidden;
-
-    box-shadow: 0 4px 15px rgba(0,0,0,0.10);
-}
-
-.category-panel summary {
-
-    background: #2563eb;
-
-    color: white;
-
-    padding: 16px 24px;
-
-    font-size: 18px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    user-select: none;
-}
-
-
-.topbar {
-
-    position: relative;
-
-    max-width: 1400px;
-
-    margin: 0 auto 30px auto;
-
-    text-align: center;
-}
-
-.title-block {
-
-    padding-top: 10px;
-}
-
-h1 {
-
-    color: #2563eb;
-
-    font-size: 4rem;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 10px;
-}
-
-
-.category-panel summary:hover {
-
-    background: #1d4ed8;
-}
-
-.title-block {
-    padding-top: 10px;
-}
-
-.title-block h1 {
-
-    font-size: 4rem;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 10px;
-}
-
-body::before {
-
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    background-image: url("images/navy academy.png");
-
-    background-repeat: no-repeat;
-
-    background-position: center 40px;
-
-    background-size: 1400px;
-
-    opacity: 0.08;
-
-    pointer-events: none;
-
-    z-index: -1;
-}
-
-.category-panel {
-
-    max-width: 350px;
-
-    margin: 20px auto 40px auto;
-
-    background: white;
-
-    border-radius: 14px;
-
-    overflow: hidden;
-
-    box-shadow: 0 4px 15px rgba(0,0,0,.10);
-}
-
-.category-header {
-
-    background: #2563eb;
-
-    color: white;
-
-    padding: 16px;
-
-    font-weight: 700;
-
-    text-align: center;
-}
-
-.category-menu {
-
-    padding: 10px;
-}
-
-.cat-btn {
-
-    width: 100%;
-
-    text-align: left;
-
-    border: none;
-
-    background: transparent;
-
-    padding: 12px 15px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    font-size: 15px;
-
-    color: #1e3a8a;
-
-    transition: .2s;
-}
-
-
-.cat-btn::before {
-
-    content: "▸ ";
-
-    color: #2563eb;
-}
-
-.cat-btn:hover {
-
-    background: #eef4ff;
-}
-
-.cat-btn.active {
-
-    background: #2563eb;
-
-    color: white;
-
-    font-weight: 700;
-}
-
-.category-menu {
-
-    display: flex;
-
-    flex-direction: column;
-
-    padding: 10px;
 }
