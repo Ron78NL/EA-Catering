@@ -121,20 +121,35 @@ function bouwMenu() {
         button.dataset.category = item.waarde;
 
         button.addEventListener("click", () => {
-            categoryMenu.querySelectorAll(".cat-btn")
-                .forEach(b => b.classList.remove("active"));
-            button.classList.add("active");
-
             geselecteerdeCategorie = item.waarde;
             categoryHeader.textContent = item.waarde === ""
                 ? standaardTitel
                 : "📚 " + item.waarde.toUpperCase();
 
-            categoryPanel.open = false;
+            updateMenu();
             filterVideos();
         });
 
         categoryMenu.appendChild(button);
+    });
+}
+
+// Is er een categorie gekozen, dan verdwijnen alle andere categorieën.
+// Alleen de gekozen categorie en een terugknop blijven zichtbaar.
+function updateMenu() {
+    categoryMenu.querySelectorAll(".cat-btn").forEach(b => {
+        const isAlle = b.dataset.category === "";
+        const isGekozen = b.dataset.category === geselecteerdeCategorie;
+
+        b.classList.toggle("active", isGekozen);
+
+        if (geselecteerdeCategorie === "") {
+            b.hidden = false;
+            b.textContent = isAlle ? "Alle video's" : b.dataset.category;
+        } else {
+            b.hidden = !(isGekozen || isAlle);
+            if (isAlle) b.textContent = "← Alle categorieën";
+        }
     });
 }
 
