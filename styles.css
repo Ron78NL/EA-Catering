@@ -199,3 +199,8 @@ body::before {
     position: relative;
     z-index: 1;
 }
+
+/* Lichtblauwe achtergrond */
+body {
+    background-color: #e6f2ff;
+}
