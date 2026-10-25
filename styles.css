@@ -183,20 +183,19 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: url("nac-logo.png") center / min(70vw, 500px) no-repeat;
-    opacity: 0.3;          /* 0.05 = heel subtiel, 0.15 = duidelijker */
-    pointer-events: none;   /* klikken gaat er dwars doorheen */
+    background: url("nac-logo.png") center 18% / min(70vw, 500px) no-repeat;
+    opacity: 0.12;              /* intensiteit blijft gelijk */
+    filter: contrast(1.4);      /* scherper, zonder meer intensiteit */
+    pointer-events: none;
     z-index: 0;
 }
 
-/* Zorgt dat de inhoud boven het watermerk blijft */
-.topbar,
-#zoekveld,
-#aantal,
-#categoriePaneel,
-#videoGrid {
-    position: relative;
-    z-index: 1;
+/* Mobiel: groter, iets hoger */
+@media (max-width: 600px) {
+    body::before {
+        background-position: center 10%;
+        background-size: 85vw auto;
+    }
 }
 
 /* Lichtblauwe achtergrond */
