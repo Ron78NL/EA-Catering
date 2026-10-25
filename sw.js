@@ -1,4 +1,4 @@
-const CACHE = "nac-videos-v1";
+const CACHE = "ea-catering-v2";
 const BESTANDEN = ["./", "./index.html", "./styles.css", "./nac-logo.png"];
 
 self.addEventListener("install", (event) => {
