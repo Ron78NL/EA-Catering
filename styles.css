@@ -99,12 +99,14 @@ body {
     padding: 0;
     border: 1px solid var(--rand);
     border-radius: 10px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.85);  /* was #fff */
     overflow: hidden;
     text-align: left;
     cursor: pointer;
     font: inherit;
     color: inherit;
+    position: relative;   /* nieuw */
+    z-index: 1;           /* nieuw */
 }
 .video-link:hover,
 .video-link:focus-visible {
