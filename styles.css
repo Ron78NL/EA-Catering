@@ -177,3 +177,25 @@ body {
     color: #fff;
     font-weight: 600;
 }
+
+/* Watermerk NAC-logo */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("nac-logo.png") center / min(70vw, 500px) no-repeat;
+    opacity: 0.08;          /* 0.05 = heel subtiel, 0.15 = duidelijker */
+    filter: grayscale(1);   /* minder fel, zodat het niet met de kleuren concurreert */
+    pointer-events: none;   /* klikken gaat er dwars doorheen */
+    z-index: 0;
+}
+
+/* Zorgt dat de inhoud boven het watermerk blijft */
+.topbar,
+#zoekveld,
+#aantal,
+#categoriePaneel,
+#videoGrid {
+    position: relative;
+    z-index: 1;
+}
