@@ -184,7 +184,7 @@ body::before {
     position: fixed;
     inset: 0;
     background: url("nac-logo.png") center / min(70vw, 500px) no-repeat;
-    opacity: 0.08;          /* 0.05 = heel subtiel, 0.15 = duidelijker */
+    opacity: 0.12;          /* 0.05 = heel subtiel, 0.15 = duidelijker */
     filter: grayscale(1);   /* minder fel, zodat het niet met de kleuren concurreert */
     pointer-events: none;   /* klikken gaat er dwars doorheen */
     z-index: 0;
