@@ -1,83 +1,142 @@
 const zoekveld = document.getElementById("zoekveld");
-const categorieKeuze = document.getElementById("categorieen");
 const aantal = document.getElementById("aantal");
-const lijst = document.getElementById("lijst");
-const modal = document.getElementById("modal");
-const modalTitel = document.getElementById("modalTitel");
-const modalVideo = document.getElementById("modalVideo");
+const categoriePaneel = document.getElementById("categoriePaneel");
+const categorieKop = document.getElementById("categorieKop");
+const categorieMenu = document.getElementById("categorieMenu");
+const videoGrid = document.getElementById("videoGrid");
+const videoModal = document.getElementById("videoModal");
+const videoFrame = document.getElementById("videoFrame");
+const videoExtern = document.getElementById("videoExtern");
 const sluitKnop = document.getElementById("sluit");
 
-// Eerste categorie is altijd "Alles"
-const alleCategorieen = [{ id: "alle", naam: "Alles" }, ...categorieen];
-let actieveCategorie = "alle";
+const standaardKop = "📚 KEUKENTECHNIEKEN";
+let geselecteerd = ""; // "" = alle categorieën
 
 // Zoeken negeert hoofdletters en accenten: "lieren" vindt "Liëren"
 const normaliseer = tekst =>
     tekst.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-function toonCategorieen() {
-    categorieKeuze.replaceChildren(...alleCategorieen.map(c => {
+function bouwMenu() {
+    const items = [{ id: "", naam: "Alle video's" }, ...categorieen];
+
+    categorieMenu.replaceChildren(...items.map(c => {
         const knop = document.createElement("button");
         knop.type = "button";
-        knop.textContent = c.naam;
-        knop.setAttribute("aria-pressed", String(c.id === actieveCategorie));
-        knop.addEventListener("click", () => {
-            actieveCategorie = c.id;
-            toonCategorieen();
-            toonLijst();
-        });
+        knop.className = "cat-btn";
+        knop.dataset.id = c.id;
+        knop.dataset.naam = c.naam;
+        knop.addEventListener("click", () => kiesCategorie(c));
         return knop;
     }));
+
+    updateMenu();
 }
 
-function toonLijst() {
+function kiesCategorie(c) {
+    geselecteerd = c.id;
+    categorieKop.textContent = c.id === ""
+        ? standaardKop
+        : "📚 " + c.naam.toUpperCase();
+    updateMenu();
+    toonVideos();
+}
+
+// Is er een categorie gekozen, dan blijven alleen die categorie
+// en een terugknop zichtbaar.
+function updateMenu() {
+    categorieMenu.querySelectorAll(".cat-btn").forEach(knop => {
+        const id = knop.dataset.id;
+        const isAlle = id === "";
+        const isGekozen = id === geselecteerd;
+
+        knop.classList.toggle("active", isGekozen);
+
+        if (geselecteerd === "") {
+            knop.hidden = false;
+            knop.textContent = isAlle ? "Alle video's" : knop.dataset.naam;
+        } else {
+            knop.hidden = !(isGekozen || isAlle);
+            knop.textContent = isAlle ? "← Alle categorieën" : knop.dataset.naam;
+        }
+    });
+}
+
+function toonVideos() {
     const zoekterm = normaliseer(zoekveld.value.trim());
 
     const gevonden = videos.filter(v =>
-        (actieveCategorie === "alle" || v.categorie === actieveCategorie) &&
+        (geselecteerd === "" || v.categorie === geselecteerd) &&
         normaliseer(v.titel).includes(zoekterm)
     );
 
     if (gevonden.length === 0) {
         aantal.textContent = "Geen video's gevonden. Probeer een andere zoekterm.";
     } else if (gevonden.length === 1) {
-        aantal.textContent = "1 video";
+        aantal.textContent = "1 video gevonden";
     } else {
-        aantal.textContent = `${gevonden.length} video's`;
+        aantal.textContent = `${gevonden.length} video's gevonden`;
     }
 
-    lijst.replaceChildren(...gevonden.map(v => {
-        const li = document.createElement("li");
-        const knop = document.createElement("button");
-        knop.type = "button";
-        knop.textContent = v.titel;
-        knop.addEventListener("click", () => openVideo(v));
-        li.appendChild(knop);
-        return li;
-    }));
+    videoGrid.replaceChildren(...gevonden.map(maakKaart));
+}
+
+function maakKaart(video) {
+    const kaart = document.createElement("div");
+    kaart.className = "video-card";
+
+    const knop = document.createElement("button");
+    knop.type = "button";
+    knop.className = "video-link";
+    knop.setAttribute("aria-label", video.titel + " afspelen");
+    knop.addEventListener("click", () => openVideo(video));
+
+    const afbeelding = document.createElement("img");
+    afbeelding.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+    afbeelding.alt = "";
+    afbeelding.loading = "lazy";
+    afbeelding.onerror = function () {
+        this.onerror = null;
+        this.src = `https://img.youtube.com/vi/${video.id}/default.jpg`;
+    };
+
+    const titel = document.createElement("h3");
+    titel.textContent = video.titel;
+
+    knop.append(afbeelding, titel);
+    kaart.appendChild(knop);
+    return kaart;
 }
 
 function openVideo(video) {
-    modalTitel.textContent = video.titel;
-    modalVideo.title = video.titel;
-    modalVideo.src = `https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&rel=0`;
-    modal.hidden = false;
+    videoFrame.replaceChildren();
+
+    const iframe = document.createElement("iframe");
+    iframe.src = `https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+    iframe.title = video.titel;
+    iframe.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    iframe.allowFullscreen = true;
+    videoFrame.appendChild(iframe);
+
+    videoExtern.href = `https://www.youtube.com/watch?v=${video.id}`;
+    videoModal.classList.add("open");
     document.body.style.overflow = "hidden";
     sluitKnop.focus();
 }
 
 function sluitVideo() {
-    modal.hidden = true;
-    modalVideo.removeAttribute("src");   // stopt het afspelen
+    videoModal.classList.remove("open");
+    videoFrame.replaceChildren(); // stopt het afspelen
     document.body.style.overflow = "";
 }
 
-zoekveld.addEventListener("input", toonLijst);
+zoekveld.addEventListener("input", toonVideos);
 sluitKnop.addEventListener("click", sluitVideo);
-modal.addEventListener("click", e => { if (e.target === modal) sluitVideo(); });
+videoModal.addEventListener("click", e => {
+    if (e.target === videoModal) sluitVideo();
+});
 document.addEventListener("keydown", e => {
-    if (e.key === "Escape" && !modal.hidden) sluitVideo();
+    if (e.key === "Escape" && videoModal.classList.contains("open")) sluitVideo();
 });
 
-toonCategorieen();
-toonLijst();
+bouwMenu();
+toonVideos();
