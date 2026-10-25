@@ -3,38 +3,33 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Video's</title>
+    <title>EA Catering – Instructievideo's</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>
-    <h1>Video's</h1>
+<header class="topbar">
+    <h1>EA CATERING</h1>
+    <p>Instructievideo's keukentechnieken</p>
 </header>
 
-<main>
-    <input type="search" id="zoekveld" placeholder="Zoek op titel…" aria-label="Zoeken">
+<input id="zoekveld" type="search" placeholder="🔍 Zoek een video..." autocomplete="off" aria-label="Zoeken">
 
-    <nav id="categorieen" aria-label="Categorieën"></nav>
+<p id="aantal" aria-live="polite"></p>
 
-    <p id="aantal" aria-live="polite"></p>
+<details class="categorie-paneel" id="categoriePaneel">
+    <summary class="categorie-kop" id="categorieKop">📚 KEUKENTECHNIEKEN</summary>
+    <div class="categorie-menu" id="categorieMenu"></div>
+</details>
 
-    <ul id="lijst"></ul>
-</main>
+<div id="videoGrid" class="video-grid"></div>
 
-<!-- Pop-up met de video -->
-<div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitel">
-    <div class="modal-venster">
-        <div class="modal-kop">
-            <h2 id="modalTitel"></h2>
-            <button type="button" id="sluit">Sluiten ✕</button>
-        </div>
-        <div class="video">
-            <iframe id="modalVideo"
-                    title="Video"
-                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-                    allowfullscreen></iframe>
-        </div>
+<!-- Afspeelvenster -->
+<div id="videoModal" class="video-modal">
+    <div class="video-modal-inner">
+        <button type="button" class="video-sluit" id="sluit" aria-label="Sluiten">✕</button>
+        <div class="video-frame" id="videoFrame"></div>
+        <a id="videoExtern" class="video-extern" target="_blank" rel="noopener noreferrer">Bekijk op YouTube</a>
     </div>
 </div>
 
