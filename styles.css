@@ -201,6 +201,7 @@ body::before {
 }
 
 /* Lichtblauwe achtergrond */
+html,
 body {
-    background-color: #e6f2ff;
+    background-color: #e6f2ff !important;
 }
