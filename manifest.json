@@ -1,8 +1,9 @@
 {
-  "name": "EA Catering – Instructievideo's",
-  "short_name": "EA Catering",
-  "start_url": "./",
-  "scope": "./",
+  "id": "/EA-Catering/",
+  "name": "EA Catering v1 – Instructievideo's",
+  "short_name": "EA Catering v1",
+  "start_url": "/EA-Catering/",
+  "scope": "/EA-Catering/",
   "display": "standalone",
   "background_color": "#e6f2ff",
   "theme_color": "#2563eb",
